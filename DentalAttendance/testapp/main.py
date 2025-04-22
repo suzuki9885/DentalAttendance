@@ -696,10 +696,10 @@ def check_adm_id():
     adm_id = data.get('adm_id')
     adm_password = data.get('adm_password')
     
-    if adm_id != 'suzuki':
+    if adm_id != ADMIN_ID:
         return jsonify({'exists': False, 'error': '管理者IDが異なります。'})
     
-    if adm_password != '1234':
+    if adm_password != ADMIN_PASSWORD:
         return jsonify({'exists': True, 'error': 'パスワードが異なります。'})
     
     return jsonify({'exists': True})
