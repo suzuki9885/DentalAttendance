@@ -16,6 +16,7 @@ from reportlab.pdfbase import pdfmetrics
 import csv
 from openpyxl import Workbook
 from openpyxl.styles import Font, Alignment, Border, Side
+from testapp.config import ADMIN_ID, ADMIN_PASSWORD
 
 from testapp.models import AttendanceRecord, User
 
@@ -34,7 +35,7 @@ def adm_login():
         adm_password = request.form.get('adm_password')
 
         # IDとパスワードが一致した場合はmanagement.htmlを表示
-        if adm_id == 'suzuki' and adm_password == '1234':
+        if adm_id == ADMIN_ID and adm_password == ADMIN_PASSWORD:
             session['adm_logged_in'] = True
             return redirect(url_for('management'))
         # 一致しなかった場合は再度adm_login.htmlを表示
