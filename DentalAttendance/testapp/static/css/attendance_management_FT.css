@@ -1,0 +1,380 @@
+body {
+    background-color: #48b1e9;
+}
+/* ヘッダースタイル */
+.attendance-header {
+    display: flex;
+    background-color: #2dbbf3f5;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* 影の自然な広がりを表現 */
+    transition: box-shadow 0.3s ease;
+}
+
+/* ヘッダーボタン共通スタイル */
+.header-button {
+    padding: 8px 12px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: 'Noto Sans JP', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s;
+}
+
+/* 戻るボタン */
+.back-button {
+    color: white;
+    text-decoration: none !important;
+}
+
+.back-button:hover {
+    background-color: #7bc2e8cb;
+    border-radius: 4px;
+    color: white;
+    width: 35px;
+    height: 35px;
+}
+
+/* 中央コンテンツ */
+.header-center {
+    display: flex;          /* 横並びにする */
+    align-items: center;    /* 垂直方向の中央揃え */
+    gap: 15px;              /* 要素間の間隔 */
+}
+
+.user-id {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.user-name {
+    color: white;
+    font-size: 18px;
+    font-weight: 520;
+}
+
+/* 詳細ボタン */
+.detail-button {
+    color: white;
+    border-radius: 4px;
+    padding: 6px 12px;
+    width: 40px;
+    height: 35px;
+}
+
+.detail-button:hover {
+    background-color: #7bc2e8cb;
+    color: white;
+}
+
+.viewDay {
+    display: block;
+    font-size: 1.2rem;
+    padding: 20px;
+    text-align: center;
+    color: #121212;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 300px;
+}
+
+.viewTime {
+    display: block;
+    font-size: 1.2rem;
+    padding: 20px;
+    text-align: center;
+    color: #121212;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 300px;
+}
+
+/* メインコンテンツエリア */
+.attendance-main {
+    display: flex;
+    flex-direction: column; /* 子要素を縦並びに */
+    align-items: center;    /* 水平方向中央寄せ */
+    color: white; /* 文字色を白に */
+    text-align: center; /* テキスト中央寄せ */
+    gap: 2px; /* 要素間の間隔 */
+}
+
+/* 日付表示 */
+#viewNowDay {
+    padding-top: 2.5%;
+    font-size: 1.4rem; /* 適宜調整 */
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* 時刻表示 */
+#viewNowTime {
+    font-size: 3.8rem; /* 日付より大きく */
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.arrive-leave {
+    display: flex;
+    justify-content: center;
+    gap: 60px; /* ボタン間の間隔 */
+    padding-top: 80px;  /* 値を40pxから80pxに増やして、ボタンをさらに下に移動 */
+}
+
+.arrive, .leave {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px; /* %からpxに変更 */
+    width: 170px; /* 幅を絶対値で指定 */
+    height: 150px; /* 高さを絶対値で指定 */
+    border: none; /* 枠線なし */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影 */
+    justify-content: center;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* より濃い影に変更 */
+    transition: box-shadow 0.3s ease; /* ホバー時のアニメーション追加 */
+}
+
+/* アイコンの色を指定 */
+.arrive i, .leave i {
+    color: #48b1e9; /* アイコン色（例: 白） */
+    font-size: 70px; /* アイコンサイズを大きく */
+    margin-bottom: 8px; /* アイコンとテキストの間隔 */
+}
+
+.button-text {
+    color: #48b1e9;
+    font-size: 25px; /* テキストサイズ調整 */
+    line-height: 1;
+    font-weight: bold;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* ホバー時の効果 */
+.arrive:hover, .leave:hover{
+    background-color: #eff9feea;
+    transform: translateY(4px);
+    box-shadow: 0 2px 6px rgba(33, 86, 115, 0.333);;
+    
+    &::after {
+        bottom: -6px;
+        height: 10px;
+        opacity: 0.7;
+        filter: blur(4px);
+    }
+}
+
+/* ナビゲーションメニュー */
+.navigation-menu {
+    position: fixed;
+    top: 0;
+    right: -20%;
+    width: 20%;
+    height: 100%;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    border-radius: 10px 0 0 10px;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.navigation-menu.active {
+    right: 0;
+}
+
+.navigation-menu ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.navigation-menu li {
+    color: black;
+    padding: 15px 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.navigation-menu li:hover {
+    background-color: #f5f5f5;
+}
+
+.close-menu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 1.3em;
+}
+
+.close-menu i {
+    font-size: 1.5em;
+}
+
+.close-menu:hover {
+    opacity: 0.7;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+.menu-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #333;
+    margin: 35px 0 15px 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #48b1e9;
+}
+
+/* モーダルスタイル */
+.modal, .error-modal, .completion-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.confirm-button {
+    background-color: #48b1e9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 85px;
+}
+
+.confirm-button:hover {
+    background-color: #3a9bd5;
+}
+
+.cancel-button {
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 85px;
+}
+
+.cancel-button:hover {
+    background-color: #e0e0e0;
+}
+            
+.completion-modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+}
+
+.completion-modal-close, .error-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #666;
+}
+            
+.completion-modal-close:hover {
+    color: #333;
+}
+            
+.completion-icon {
+    font-size: 3em;
+    color: #48b1e9;
+    margin-bottom: 15px;
+}
+            
+.completion-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+            
+.completion-message {
+    font-size: 1.1em;
+    color: #666;
+}
+
+.error-modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    width: 300px;
+    height: 180px;
+}
+
+.error-icon {
+    font-size: 3rem;
+    color: #ff4d4d;
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 17px;
+}
+

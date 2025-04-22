@@ -1,0 +1,151 @@
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.back-button {
+    color: #48b1e9;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: fixed;
+    left: 20px;
+    top: 20px;
+}
+
+.back-button:hover {
+    background-color: #48b1e9;
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    margin-top: 5px;
+    width: 600px;
+}
+
+.logo {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #48b1e9;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.input-field {
+    width: 400px;
+    height: 50px;
+    padding: 8px 12px;
+    font-family: 'Noto Sans JP', sans-serif;
+    border: none;
+    border-radius: 10px;
+    color: #333;
+    font-size: 1em;
+    line-height: 1.5;
+    outline: none;
+    display: block;
+    margin: 0;
+    border: 2px solid #00FFFF;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
+}
+
+.input-field:focus {
+    border: 2px solid #48b1e9;
+}
+
+.select-icon {
+    position: absolute;
+    right: 20px;
+    top: 70%;
+    transform: translateY(-50%);
+    color: #00FFFF;
+    pointer-events: none;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 13px;
+    top: 70%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #00FFFF;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.toggle-password:hover {
+    color: #48b1e9;
+}
+
+.add {
+    font-family: 'Noto Sans JP', sans-serif;
+    width: 100%;
+    padding: 15px 15px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1em;
+    line-height: 1.5;
+    outline: none;
+    display: block;
+    margin: 25px auto;
+    transition: all 0.3s ease;
+    position: relative;
+    background-color: #48b1e9;
+    box-shadow: 0 6px 12px -4px rgba(14, 140, 213, 0.697);
+}
+
+.add:hover {
+    background-color: #3a9bd5;
+    transform: translateY(2px);
+    box-shadow: 0 4px 8px -2px rgba(42, 106, 143, 0.3);
+}
+
+.input-field::placeholder {
+    color: #00FFFF;
+}
+
+/* パスワード入力欄の点の間隔を広げる */
+input[type="password"] {
+    letter-spacing: 2px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.input-field option[value=""][disabled] {
+    color: #00FFFF;
+}
+
+.input-field option:not([value=""]):not(:disabled) {
+    color: #00FFFF;
+} 

@@ -1,0 +1,103 @@
+body {
+    background-color: rgba(202, 252, 255, 0.315);
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-bottom: 25px;
+}
+
+.back-button {
+    color: #48b1e9;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: fixed;
+    left: 20px;
+    top: 20px;
+}
+
+.back-button:hover {
+    background-color: #48b1e9;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+}
+
+.account-list {
+    margin-top: 20px;
+}
+
+.account-list h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table th {
+    background-color: #48b1e9;
+    color: white;
+    padding: 12px;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-align: center;
+    font-weight: 480;
+    position: relative;
+}
+
+.table th::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+}
+
+.table td {
+    padding: 12px;
+    font-family: 'Noto Sans JP', sans-serif;
+    border-bottom: 1px solid #dee2e6;
+    vertical-align: middle;
+}
+
+.btn-danger {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.btn-danger i {
+    margin-right: 5px;
+}
+
+.alert {
+    width: 100%;
+    margin-bottom: 20px;
+} 

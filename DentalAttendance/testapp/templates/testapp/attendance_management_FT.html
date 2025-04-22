@@ -1,0 +1,98 @@
+<!-- 正社員用の勤怠登録画面 -->
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/attendance_management_FT.css') }}"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <script src="{{ url_for('static', filename='javascript/daytimeview.js') }}" defer></script>
+        <script src="{{ url_for('static', filename='javascript/attendance_management_FT.js') }}" defer></script>
+        <title>勤怠登録 正社員</title>
+    </head>
+    <body>
+        <header class="attendance-header">
+            <a href="{{ url_for('employee_login') }}" class="header-button back-button">
+                <i class="fa-solid fa-chevron-left fa-lg"></i>
+            </a>
+            <div class="header-center">
+                <span class="user-id">ID: {{ session.get('employee_id', '') }}</span>
+                <span class="user-name">{{ session.get('name', '') }}</span>
+            </div>
+
+            <button class="header-button detail-button">
+                <i class="fa-solid fa-bars fa-lg"></i>
+            </button>
+            <div class="navigation-menu">
+                <button class="close-menu">
+                    <i class="fa-solid fa-xmark fa-lg"></i>
+                </button>
+                <h2 class="menu-title">勤怠履歴</h2>
+                <ul id="attendance-records">
+                    <!-- ここに記録が表示されます -->
+                </ul>
+            </div>
+        </header>
+
+        <div class="attendance-main">
+            <span id="viewNowDay"></span>
+            <span id="viewNowTime"></span>
+        </div>
+
+        <!--勤怠ボタン-->
+        <div class="arrive-leave">
+            <button type="button" class="arrive" onclick="showModal('出勤')">
+                <i class="fa-solid fa-arrow-right-to-bracket fa-5x"></i>
+                <span class="button-text">出勤</span>
+            </button>
+            <button type="button" class="leave" onclick="showModal('退勤')">
+                <i class="fa-solid fa-arrow-right-from-bracket fa-5x"></i>
+                <span class="button-text">退勤</span>
+            </button>
+        </div>
+
+        <!-- 確認モーダル -->
+        <div id="confirmationModal" class="modal">
+            <div class="modal-content">
+                <h2>確認</h2>
+                <p id="modalMessage"></p>
+                <div class="button-group">
+                    <form id="confirmForm" method="POST">
+                        <input type="hidden" name="action_type" id="modalActionType">
+                        <button type="submit" class="confirm-button">はい</button>
+                    </form>
+                    <button class="cancel-button" onclick="closeModal()">いいえ</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 完了モーダル -->
+        <div id="completionModal" class="completion-modal">
+            <div class="completion-modal-content">
+                <button class="completion-modal-close" onclick="closeCompletionModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <i class="fa-regular fa-circle-check completion-icon"></i>
+                <h2 class="completion-title" id="completionTitle"></h2>
+                <p class="completion-message" id="completionMessage"></p>
+            </div>
+        </div>
+
+        <!-- エラーモーダル -->
+        <div id="errorModal" class="error-modal">
+            <div class="error-modal-content">
+                <button class="error-modal-close" onclick="closeErrorModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <i class="fa-solid fa-triangle-exclamation error-icon"></i>
+                <p class="error-message" id="errorMessage"></p>
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

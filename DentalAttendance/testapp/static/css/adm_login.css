@@ -1,0 +1,195 @@
+.header {
+    display: flex; /*横並び*/
+    align-items: center; /*中央寄せ*/
+    margin-top: 4.3rem; /*上部の空白*/
+    gap: 1.9rem;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-left: 29%;
+}
+
+.title_name{
+    color: #48b1e9;
+    font-size: 2.1rem;
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+}
+
+.switch-button {
+    display: flex;
+    gap: 5px;
+    margin: 21px auto 21px;
+    justify-content: center;
+    max-width: 300px;
+    padding-bottom: 8px;
+}
+
+a.adm_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans JP', sans-serif;
+	text-decoration: none;
+	width: 90px;
+    height: 30px;
+	margin: auto;
+    font-size: 12px;
+	padding: 0;
+	font-weight: bold;
+	border: 2px solid #00FFFF;
+	color: white;
+    background-color: #48b1e9;
+	border-radius: 50vh;
+}
+
+a.employee_button {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans JP', sans-serif;
+	text-decoration: none;
+	width: 90px;
+    height: 30px;
+	margin: auto;
+    font-size: 12px;
+	padding: 0;
+	font-weight: bold;
+	border: 2px solid #00FFFF;
+	color: #48b1e9;
+	border-radius: 50vh;
+	transition: 0.5s;
+}
+a.employee_button:hover {
+	color: #fff;
+	background: #48b1e9;
+}
+
+.validation-message {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.input-container {
+    position: relative; /* 絶対配置の基準 */
+    width: 28%;        /* inputと同じ幅に */
+    margin: 33px auto; /* 中央寄せを維持 */
+}
+
+.input-field {
+    width: 100%;
+    padding: 14px 14px;
+    text-indent: 40px;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 2px; /* 間隔の大きさ（適宜調整） */
+    border: none;
+    border-radius: 27px;
+    color: #333;
+    font-size: 1em;
+    line-height: 1.5;
+    outline: none; /* ブラウザ標準のフォーカス枠を無効化 */
+    display: block; /* 中央配置のためにブロック要素化 */
+    margin: 25px auto; /* 左右のマージンを自動で中央寄せ */
+    border: 2px solid #00FFFF;
+    transition: border-color 0.3s, box-shadow 0.3s; 
+}
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s;
+}
+
+/* フォーカス時のスタイル */
+.input-field:focus {
+    border: 2px solid #48b1e9; /* 枠線色をマゼンタに変更 */
+   /* box-shadow: 0 0 5px rgba(255, 0, 255, 0.5); オプション: 発光効果 */
+}
+
+/* ID用アイコン（Font Awesome） */
+.input-id .input-icon {
+    color: #00FFFF;
+    font-size: 20px;
+    left: 22.5px;
+}
+
+/* パスワード用アイコン（SVG） */
+.input-pwd .input-icon {
+    width: 24px;
+    height: 24px;
+    mask-image: url("/static/img/lock.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    background-color: #00FFFF;
+    left: 20px;
+}
+
+.input-container:focus-within .input-icon {
+    color: #48b1e9;
+}
+
+/* パスワード入力欄のフォーカス時のアイコン色変更 */
+.input-pwd:focus-within .input-icon {
+    background-color: #48b1e9;
+}
+
+.input-field::placeholder {
+    color: #00FFFF;
+}
+
+/* パスワード入力欄の点の間隔を広げる */
+input[type="password"] {
+    letter-spacing: 2px; /* 間隔の大きさ（適宜調整） */
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #00FFFF;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+
+.toggle-password:hover {
+    color: #48b1e9;
+}
+
+.login {
+    font-family: 'Noto Sans JP', sans-serif;
+    width: 28%;
+    padding: 15px 15px;
+    border: none;
+    border-radius: 27px;
+    color: white;
+    font-size: 1em;
+    line-height: 1.5;
+    outline: none;
+    display: block;
+    margin: 25px auto;
+    transition: all 0.3s ease;
+    position: relative;
+    background-color: #48b1e9;
+    box-shadow: 0 6px 12px -4px rgba(14, 140, 213, 0.697);
+}
+
+/* ホバー時の効果 */
+.login:hover {
+    background-color: #3a9bd5;
+    transform: translateY(2px);
+    box-shadow: 0 4px 8px -2px rgba(42, 106, 143, 0.3);
+}

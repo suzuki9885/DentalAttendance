@@ -1,0 +1,130 @@
+.container {
+    padding: 20px;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    padding-top: 5px;
+}
+
+.back-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    padding: 8px;
+    margin-right: 15px;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+.header h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 0;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-left: auto;
+}
+
+.month-display {
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-width: 90px;
+    text-align: center;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Noto Sans JP', sans-serif;
+    border: 1px solid #dee2e6;
+}
+
+.table th {
+    background-color: #48b1e9;
+    font-weight: 400;
+    color: white;
+}
+
+.table thead th:first-child,
+.table tbody td:first-child {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+.table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.attendance-time {
+    display: block;
+    font-size: 0.9rem;
+    margin: 2px 0;
+    padding: 2px 0;
+    min-height: 1.2em;
+}
+
+.attendance-time.empty {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.table td {
+    padding: 4px;
+    vertical-align: middle;
+    min-height: 4.8em;
+}
+
+.table td:first-child {
+    min-height: auto;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+} 

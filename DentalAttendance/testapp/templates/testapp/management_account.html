@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/management_account.css') }}"/>
+        <script src="{{ url_for('static', filename='javascript/management_account.js') }}" defer></script>
+        <title>アカウント管理</title>
+    </head>
+    <body>
+        <a href="{{ url_for('management') }}" class="back-button">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <div class="account-list">
+                <h2>アカウント一覧</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">名前</th>
+                            <th class="text-center">雇用形態</th>
+                            <th class="text-center">従業員ID</th>
+                            <th class="text-center">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td class="text-center">{{ user.name }}</td>
+                            <td class="text-center">{{ user.employment_type }}</td>
+                            <td class="text-center">{{ user.employee_id }}</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-danger" onclick="showDeleteConfirmation('{{ user.id }}', '{{ user.name }}', '{{ user.employment_type }}', '{{ user.employee_id }}')">
+                                    <i class="fas fa-trash"></i> 削除
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 削除確認モーダル -->
+        <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteConfirmationModalLabel">アカウント削除確認</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>以下のアカウントを削除してもよろしいですか？</p>
+                        <p><strong>名前：</strong> <span id="deleteConfirmName"></span></p>
+                        <p><strong>雇用形態：</strong> <span id="deleteConfirmEmploymentType"></span></p>
+                        <p><strong>従業員ID：</strong> <span id="deleteConfirmEmployeeId"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <form id="deleteForm" method="POST" style="display: inline;">
+                            <button type="submit" class="btn btn-danger">削除</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>

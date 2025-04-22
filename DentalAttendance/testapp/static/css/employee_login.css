@@ -1,0 +1,195 @@
+body {
+    background-color: #48b1e9;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex; /*横並び*/
+    align-items: center; /*中央寄せ*/
+    margin-top: 4.3rem; /*上部の空白*/
+    gap: 1.9rem;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-left: 29%;
+}
+
+.title_name{
+    color: white;
+    font-size: 2.1rem;
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+}
+
+.switch-button {
+    display: flex;
+    gap: 5px;
+    margin: 21px auto 21px;
+    justify-content: center;
+    max-width: 300px;
+    padding-bottom: 8px;
+}
+
+a.employee_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-decoration: none;
+    width: 90px;
+    height: 30px;
+    margin: auto;
+    font-size: 12px;
+    padding: 0;
+    font-weight: bold;
+    border: 2px solid white;
+    color: #48b1e9;
+    background-color: white;
+    border-radius: 50vh;
+}
+
+a.adm_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-decoration: none;
+    width: 90px;
+    height: 30px;
+    margin: auto;
+    font-size: 12px;
+    padding: 0;
+    font-weight: bold;
+    border: 2px solid white;
+    color: white;
+    border-radius: 50vh;
+    transition: 0.5s;
+}
+
+a.adm_button:hover {
+    color: #48b1e9;
+    background: white;
+}
+
+.input-container {
+    position: relative;
+    width: 28%;
+    margin: 33px auto;
+}
+
+.input-field {
+    width: 100%;
+    padding: 14px 14px;
+    text-indent: 40px;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 27px;
+    color: #333;
+    font-size: 1em;
+    line-height: 1.5;
+    outline: none;
+    display: block;
+    margin: 25px auto;
+    border: 2px solid white;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.input-field::placeholder {
+    color: white;
+}
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s;
+}
+
+/* ID用アイコン（Font Awesome） */
+.input-id .input-icon {
+    color: white;
+    font-size: 20px;
+    left: 22.5px;
+}
+
+/* パスワード用アイコン（SVG） */
+.input-pwd .input-icon {
+    width: 24px;
+    height: 24px;
+    left: 20px;
+    mask-image: url("/static/img/lock.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    background-color: white;
+}
+
+.input-container:focus-within .input-icon {
+    color: white;
+}
+
+.input-container:focus-within .input-pwd .input-icon {
+    background-color: white;
+}
+
+.input-field:focus {
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    padding: 0;
+}
+
+input[type="password"] {
+    letter-spacing: 2px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.login {
+    font-family: 'Noto Sans JP', sans-serif;
+    width: 28%;
+    padding: 15px 15px;
+    border: none;
+    border-radius: 27px;
+    color: #48b1e9;
+    font-size: 1em;
+    line-height: 1.5;
+    outline: none;
+    display: block;
+    margin: 25px auto;
+    transition: all 0.3s ease;
+    position: relative;
+    background-color: white;
+    box-shadow: 0 6px 12px -4px rgba(255, 255, 255, 0.3);
+}
+
+.login:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(4px);
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.2);
+}
+
+.validation-message {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: left;
+    padding-left: 5px;
+}

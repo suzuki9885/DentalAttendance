@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/add_account.css') }}"/>
+        <script src="/static/javascript/add_account.js" defer></script>
+        <title>アカウント追加</title>
+    </head>
+    <body>
+        <a href="{{ url_for('management') }}" class="back-button">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <div class="container">
+            <img src="{{ url_for('static', filename='img/鈴木歯科のロゴ(管理者用).png') }}" class="logo" alt="鈴木歯科のロゴ">
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <form id="accountForm" action="{{ url_for('add_account') }}" method="POST" onsubmit="showConfirmation(event)">
+                <div class="input-container">
+                    <label for="name" class="input-label">名前</label>
+                    <!--長さは20文字までに指定-->
+                    <input type="text" class="input-field" id="name" name="name" placeholder="例）山田　太朗" maxlength="20" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="employmentType" class="input-label">雇用形態</label>
+                    <select class="input-field" name="employment_type" id="employmentType" required>
+                        <option value="" disabled selected>雇用形態を選択</option>
+                        <option value="FT">FT（正社員）</option>
+                        <option value="PT">PT（パート）</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down select-icon"></i>
+                </div>
+
+                <div class="input-container">
+                    <label for="employeeId" class="input-label">従業員ID</label>
+                    <!--長さは4文字までに指定-->
+                    <input type="text" class="input-field" id="employeeId" name="employee_id" placeholder="従業員ID" maxlength="4" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="passwordField" class="input-label">パスワード</label>
+                    <!--長さは10文字までに指定-->
+                    <input type="password" class="input-field" id="passwordField" name="password" placeholder="パスワード" maxlength="10" required>
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('passwordField', this)"><i class="fa-regular fa-eye"></i></button>
+                </div>
+
+                <div class="input-container">
+                    <label for="confirmPassword" class="input-label">パスワード（確認）</label>
+                    <input type="password" id="confirmPasswordField" class="input-field" placeholder="パスワードを再入力" required>
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPasswordField', this)"><i class="fa-regular fa-eye"></i></button>
+                </div>
+
+                <button type="submit" class="add">アカウント追加</button>
+            </form>
+        </div>
+
+        <!-- 確認モーダル -->
+        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmationModalLabel">アカウント追加確認</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>名前：</strong> <span id="confirmName"></span></p>
+                        <p><strong>雇用形態：</strong> <span id="confirmEmploymentType"></span></p>
+                        <p><strong>従業員ID：</strong> <span id="confirmEmployeeId"></span></p>
+                        <p><strong>パスワード：</strong> <span id="confirmPassword"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="submitForm()">追加</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>
