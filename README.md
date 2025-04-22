@@ -34,7 +34,7 @@ export ADMIN_PASSWORD=your_admin_password
 
 ## アプリケーションの起動
 
-3. アプリケーションの起動
+1. アプリケーションの起動
 ```bash
 cd DentalAttendance
 python3 server.py
