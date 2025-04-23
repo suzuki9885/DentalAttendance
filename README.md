@@ -15,9 +15,9 @@ source myenv/bin/activate
 pip install -r requirements.txt
 ```
 
-### データベースの初期化
+データベースの初期化
 
-####1. データベースの作成
+1. データベースの作成
 ```bash
 cd DentalAttendance
 flask db init
@@ -25,7 +25,7 @@ flask db migrate
 flask db upgrade
 ```
 
-####2. 管理者アカウントの設定
+2. 管理者アカウントの設定
 環境変数で管理者ID(your_admin_id)とパスワード(your_admin_password)を設定します：
 （初期設定は、管理者ID：suzuki、パスワード：kamkam6としている）
 ```bash
@@ -35,13 +35,13 @@ export ADMIN_PASSWORD=your_admin_password
 
 ## アプリケーションの起動
 
-####1. アプリケーションの起動
+1. アプリケーションの起動
 ```bash
 cd DentalAttendance
 python3 server.py
 ```
 
-####2. ブラウザでアクセス
+2. ブラウザでアクセス
 ```
 http://127.0.0.1:5000
 ```
