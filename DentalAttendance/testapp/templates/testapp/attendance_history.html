@@ -44,7 +44,7 @@
                     <tr>
                         <td style="font-weight: bold;">{{ employee.name }}</td>
                         {% for date in dates %}
-                        <td>
+                        <td class="{% if employee.attendance.get(date.date|string) and ((employee.attendance[date.date|string].arrive and not employee.attendance[date.date|string].leave) or (not employee.attendance[date.date|string].arrive and employee.attendance[date.date|string].leave)) %}incomplete-attendance{% endif %}">
                             {% if employee.attendance.get(date.date|string) %}
                                 {% if employee.employment_type == 'PT' %}
                                     <span class="attendance-time">{{ employee.attendance[date.date|string].arrive or '' }}</span>
