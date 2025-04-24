@@ -448,6 +448,30 @@ def download_pdf(year, month):
         ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.lightgrey])
     ]))
 
+    # 出勤または退勤の記録がないセルを赤字に設定
+    for i, employee in enumerate(employees, 1):
+        current_date = start_date
+        col = 1  # 列インデックス（0から始まる）
+        while current_date <= end_date:
+            date_str = current_date.strftime('%Y-%m-%d')
+            records = AttendanceRecord.query.filter_by(
+                user_id=employee.id,
+                date=date_str
+            ).order_by(AttendanceRecord.time).all()
+            
+            if records:
+                arrive = next((r.time.strftime('%-H:%M') for r in records if r.action_type == '出勤'), '')
+                leave = next((r.time.strftime('%-H:%M') for r in records if r.action_type == '退勤'), '')
+                
+                # 出勤または退勤の記録がない場合、そのセルを赤字に設定
+                if (arrive and not leave) or (not arrive and leave):
+                    table.setStyle(TableStyle([
+                        ('TEXTCOLOR', (col, i), (col, i), colors.red)
+                    ]))
+            
+            col += 1
+            current_date += timedelta(days=1)
+
     elements.append(table)
     
     # PDFの生成
