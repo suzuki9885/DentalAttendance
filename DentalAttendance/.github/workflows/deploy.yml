@@ -28,7 +28,6 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         enable-AzPSSession: true
         tenant-id: 14c97640-0420-40f4-857d-28df96c90515
-        allow-no-subscriptions: true
     
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
