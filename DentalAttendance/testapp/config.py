@@ -11,6 +11,10 @@ DATABASE_URL = os.environ.get('DATABASE_URL', 'mssql+pyodbc://suzuki:Suke1229@de
 SQLALCHEMY_DATABASE_URI = DATABASE_URL
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+# 設定の確認
+print(f"DATABASE_URL: {os.environ.get('DATABASE_URL')}")
+print(f"SQLALCHEMY_DATABASE_URI: {SQLALCHEMY_DATABASE_URI}")
+
 # セキュリティ設定
 SECRET_KEY = os.environ.get('SECRET_KEY')  # 環境変数から取得
 
