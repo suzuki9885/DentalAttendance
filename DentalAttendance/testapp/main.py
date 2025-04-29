@@ -472,6 +472,7 @@ def download_pdf(year, month):
             col += 1
             current_date += timedelta(days=1)
 
+
     elements.append(table)
     
     # PDFの生成
