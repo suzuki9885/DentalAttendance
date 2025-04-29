@@ -19,4 +19,5 @@ migrate = Migrate(app, db)
 with app.app_context():
     db.create_all()
 
-import testapp.main
+# ルーティングのインポート
+from testapp import main
