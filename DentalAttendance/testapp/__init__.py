@@ -15,15 +15,6 @@ app.config['SECRET_KEY'] = SECRET_KEY
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-# データベース接続テスト
-@app.before_first_request
-def test_db_connection():
-    try:
-        db.session.execute('SELECT 1')
-        print("データベース接続成功")
-    except Exception as e:
-        print(f"データベース接続エラー: {str(e)}")
-
 # テーブルを作成
 with app.app_context():
     db.create_all()
