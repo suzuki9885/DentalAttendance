@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import case
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from testapp import app, db
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4, landscape
@@ -682,7 +682,8 @@ def confirm_attendance():
     action_type = request.form.get('action_type')
     
     # 確認後の記録
-    current_time = datetime.now()
+    JST = timezone(timedelta(hours=9), 'JST')
+    current_time = datetime.now(JST)
     record = AttendanceRecord(
         user_id=user_id,
         action_type=action_type,
