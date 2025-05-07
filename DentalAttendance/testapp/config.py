@@ -7,13 +7,8 @@ ADMIN_ID = os.environ.get('ADMIN_ID')  # 環境変数から取得
 ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD')  # 環境変数から取得
 
 # データベース設定
-DATABASE_URL = os.environ.get('DATABASE_URL', 'mssql+pyodbc://suzuki:Suke1229@dental-account.database.windows.net/dental_account?driver=ODBC+Driver+17+for+SQL+Server')
-SQLALCHEMY_DATABASE_URI = DATABASE_URL
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-# 設定の確認
-print(f"DATABASE_URL: {os.environ.get('DATABASE_URL')}")
-print(f"SQLALCHEMY_DATABASE_URI: {SQLALCHEMY_DATABASE_URI}")
 
 # セキュリティ設定
 SECRET_KEY = os.environ.get('SECRET_KEY')  # 環境変数から取得

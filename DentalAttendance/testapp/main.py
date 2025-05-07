@@ -95,24 +95,20 @@ def add_account():
         return redirect(url_for('adm_login'))
     if request.method == 'POST':
         try:
-            print("POSTリクエストを受信")
             # フォームデータの取得
             name = request.form.get('name')
             employment_type = request.form.get('employment_type')
             employee_id = request.form.get('employee_id')
             password = request.form.get('password')
-            print(f"受信したデータ: name={name}, type={employment_type}, id={employee_id}")
 
             # 入力値の検証
             if not all([name, employment_type, employee_id, password]):
-                print("必須項目が不足しています")
                 flash('すべての項目を入力してください。', 'error')
                 return redirect(url_for('add_account'))
 
             # 従業員IDの重複チェック
             existing_user = User.query.filter_by(employee_id=employee_id).first()
             if existing_user:
-                print(f"従業員ID {employee_id} は既に存在します")
                 flash('既に存在している従業員IDです', 'error')
                 return redirect(url_for('add_account'))
 
@@ -128,18 +124,18 @@ def add_account():
             )
 
             # データベースに保存
-            print("データベースに保存を試みます")
             db.session.add(new_user)
             db.session.commit()
-            print("データベースへの保存が成功しました")
 
+            # 成功メッセージをフラッシュ
             flash('アカウントが正常に作成されました。', 'success')
             # 成功時はアカウント管理画面にリダイレクト
             return redirect(url_for('management_account'))
 
         except Exception as e:
-            print(f"エラーが発生しました: {str(e)}")
+            # エラーが発生した場合はロールバック
             db.session.rollback()
+            # エラーメッセージをフラッシュ（エラー内容を含める）
             flash(f'アカウントの作成に失敗しました: {str(e)}', 'error')
             return redirect(url_for('add_account'))
 

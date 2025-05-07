@@ -7,7 +7,7 @@ class User(db.Model):
     name = db.Column(db.String(20), nullable=False)  # 20文字まで
     employment_type = db.Column(db.String(2), nullable=False)  # FTまたはPT
     employee_id = db.Column(db.String(4), unique=True, nullable=False)  # 4文字（例：FT01）
-    password = db.Column(db.String(10), nullable=False)  # 10文字まで
+    password = db.Column(db.String(255), nullable=False)  # パスワードハッシュ用に長さを増やす
 
     def __init__(self, name, employment_type, employee_id, password):
         self.name = name
