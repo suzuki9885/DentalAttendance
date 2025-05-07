@@ -8,6 +8,7 @@ ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD')  # 環境変数から取得
 
 # データベース設定
 SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')  # 環境変数から取得
+print(f"[DEBUG] SQLALCHEMY_DATABASE_URI: {SQLALCHEMY_DATABASE_URI}")
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 # セキュリティ設定
