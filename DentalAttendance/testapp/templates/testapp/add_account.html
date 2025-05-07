@@ -27,7 +27,7 @@
                 {% endif %}
             {% endwith %}
             
-            <form id="accountForm" action="{{ url_for('add_account') }}" method="POST" onsubmit="showConfirmation(event)">
+            <form id="accountForm" action="{{ url_for('add_account') }}" method="POST" onsubmit="showConfirmation(event)" accept-charset="UTF-8">
                 <div class="input-container">
                     <label for="name" class="input-label">名前</label>
                     <!--長さは20文字までに指定-->
