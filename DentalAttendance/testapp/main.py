@@ -544,6 +544,7 @@ def report(year=None, month=None):
                 'year': current_date.year,
                 'month': current_date.month,
                 'day': current_date.day,
+                'day_of_week': ['月', '火', '水', '木', '金', '土', '日'][current_date.weekday()],
                 'arrive': arrive,
                 'leave': leave
             })
